@@ -1,7 +1,7 @@
 # TPC-H demo for CarbonData
 
 ## Demo description
-ee this [doc](./doc/CarbonData-Demo.pdf)
+See this [doc](./doc/CarbonData-Demo.pdf)
 
 It covers following use case for CarbonData
 
@@ -20,7 +20,7 @@ It covers following use case for CarbonData
 
 ## Test in local spark
 
-run following script in local_script folder
+Run following script
 
 ```shell
 ./genenerate_data
@@ -34,7 +34,7 @@ run following script in local_script folder
 
 ## Test in spark cluster
 
-run following script in cluster_script folder
+Run following script
 
 ```shell
 ./genenerate_data
