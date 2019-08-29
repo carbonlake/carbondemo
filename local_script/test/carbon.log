@@ -1,0 +1,43 @@
+Connecting to jdbc:hive2://carbon15:10000
+18/11/26 23:30:25 INFO Utils (Utils:310): Supplied authorities: carbon15:10000
+18/11/26 23:30:25 INFO Utils (Utils:397): Resolved authority: carbon15:10000
+18/11/26 23:30:25 INFO HiveConnection (HiveConnection:203): Will try to open client transport with JDBC Uri: jdbc:hive2://carbon15:10000
+Connected to: Spark SQL (version 2.2.1)
+Driver: Hive JDBC (version 1.2.1.spark2)
+Transaction isolation: TRANSACTION_REPEATABLE_READ
+0: jdbc:hive2://carbon15:10000> use tpchcarbon;
++---------+--+
+| Result  |
++---------+--+
++---------+--+
+No rows selected (0.13 seconds)
+0: jdbc:hive2://carbon15:10000> 
+0: jdbc:hive2://carbon15:10000> select count(*) from LINEITEM;
++-----------+--+
+| count(1)  |
++-----------+--+
+| 59986052  |
++-----------+--+
+1 row selected (2.342 seconds)
+0: jdbc:hive2://carbon15:10000> select count(*) from SUPPLIER;
++-----------+--+
+| count(1)  |
++-----------+--+
+| 100000    |
++-----------+--+
+1 row selected (0.242 seconds)
+0: jdbc:hive2://carbon15:10000> select count(*) from PARTSUPP;
++-----------+--+
+| count(1)  |
++-----------+--+
+| 8000000   |
++-----------+--+
+1 row selected (0.205 seconds)
+0: jdbc:hive2://carbon15:10000> select count(*) from CUSTOMER;
++-----------+--+
+| count(1)  |
++-----------+--+
+| 1500000   |
++-----------+--+
+1 row selected (0.159 seconds)
+0: jdbc:hive2://carbon15:10000> select count(*) from NATION;

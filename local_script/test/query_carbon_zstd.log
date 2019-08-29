@@ -1,0 +1,136 @@
+Connecting to jdbc:hive2://carbon15:10000
+18/11/29 10:52:39 INFO Utils (Utils:310): Supplied authorities: carbon15:10000
+18/11/29 10:52:39 INFO Utils (Utils:397): Resolved authority: carbon15:10000
+18/11/29 10:52:39 INFO HiveConnection (HiveConnection:203): Will try to open client transport with JDBC Uri: jdbc:hive2://carbon15:10000
+Connected to: Spark SQL (version 2.2.1)
+Driver: Hive JDBC (version 1.2.1.spark2)
+Transaction isolation: TRANSACTION_REPEATABLE_READ
+0: jdbc:hive2://carbon15:10000> use tpchcarbon_zstd;
++---------+--+
+| Result  |
++---------+--+
++---------+--+
+No rows selected (0.132 seconds)
+0: jdbc:hive2://carbon15:10000> 
+0: jdbc:hive2://carbon15:10000> select count(*) from LINEITEM;
++------------+--+
+|  count(1)  |
++------------+--+
+| 179958156  |
++------------+--+
+1 row selected (0.158 seconds)
+0: jdbc:hive2://carbon15:10000> select count(*) from SUPPLIER;
++-----------+--+
+| count(1)  |
++-----------+--+
+| 300000    |
++-----------+--+
+1 row selected (0.082 seconds)
+0: jdbc:hive2://carbon15:10000> select count(*) from PARTSUPP;
++-----------+--+
+| count(1)  |
++-----------+--+
+| 24000000  |
++-----------+--+
+1 row selected (0.066 seconds)
+0: jdbc:hive2://carbon15:10000> select count(*) from CUSTOMER;
++-----------+--+
+| count(1)  |
++-----------+--+
+| 4500000   |
++-----------+--+
+1 row selected (0.069 seconds)
+0: jdbc:hive2://carbon15:10000> select count(*) from NATION;
++-----------+--+
+| count(1)  |
++-----------+--+
+| 75        |
++-----------+--+
+1 row selected (0.062 seconds)
+0: jdbc:hive2://carbon15:10000> select count(*) from REGION;
++-----------+--+
+| count(1)  |
++-----------+--+
+| 15        |
++-----------+--+
+1 row selected (0.054 seconds)
+0: jdbc:hive2://carbon15:10000> select count(*) from PART;
++-----------+--+
+| count(1)  |
++-----------+--+
+| 6000000   |
++-----------+--+
+1 row selected (0.062 seconds)
+0: jdbc:hive2://carbon15:10000> select count(*) from ORDERS;
++-----------+--+
+| count(1)  |
++-----------+--+
+| 45000000  |
++-----------+--+
+1 row selected (0.081 seconds)
+0: jdbc:hive2://carbon15:10000> 
+0: jdbc:hive2://carbon15:10000> 
+0: jdbc:hive2://carbon15:10000> -- 商业智能计算测试TPC-H 是美国交易处理效能委员会(TPC,Transaction Processing Performance Council) 组织制定的用来模拟决策支持类应用的一个测 试集.目前,在学术界和工业界普遍采用它来评价决策支持技术方面应用的性能. 这种商业测试可以全方位评测系统的整体商业计算综合能力，对厂商的要求更高，同时也具有普遍的商业实用意义，目前在银行信贷分析和信用卡分析、电信运营分析、税收分析、烟草行业决策分析中都有广泛的 应用。
+0: jdbc:hive2://carbon15:10000> -- TPC-H 基准测试是由 TPC-D(由 TPC 组织于 1994 年指定的标准,用于决策支持系统方面的测试基准)发展而来的.TPC-H 用 3NF 实现了一个数据仓库,共包含 8 个基本关 系,其数据量可以设定从 1G~3T 不等。TPC-H 基准测试包括 22 个查询(Q1~Q22),其主要评价指标是各个查询的响应时间,即从提交查询到结果返回所需时间.TPC-H 基准测试的度量单位是每小时执行的查询数( QphH@size)，其中 H 表示每小 时系统执行复杂查询的平均次数，size 表示数据库规模的大小,它能够反映出系统在处理查询时的能力.TPC-H 是根据真实的生产运行环境来建模的,这使得它可以评估一些其他测试所不能评估的关键性能参数.总而言之,TPC 组织颁布的TPC-H 标准满足了数据仓库领域 的测试需求,并且促使各个厂商以及研究机构将该项技术推向极限。
+0: jdbc:hive2://carbon15:10000> 
+0: jdbc:hive2://carbon15:10000> -- Q01 统计查询
+0: jdbc:hive2://carbon15:10000> -- Q02 WHERE条件中，使用子查询(=)
+0: jdbc:hive2://carbon15:10000> -- Q03 多表关联统计查询，并统计(SUM)
+0: jdbc:hive2://carbon15:10000> -- Q04 WHERE条件中，使用子查询(EXISTS)，并统计(COUNT)
+0: jdbc:hive2://carbon15:10000> -- Q05 多表关联查询(=)，并统计(SUM)
+0: jdbc:hive2://carbon15:10000> -- Q06 条件(BETWEEN AND)查询，并统计(SUM)
+0: jdbc:hive2://carbon15:10000> -- Q07 带有FROM子查询，从结果集中统计(SUM)
+0: jdbc:hive2://carbon15:10000> -- Q08 带有FROM多表子查询，从结果集中的查询列上带有逻辑判断(WHEN THEN ELSE)的统计(SUM)
+0: jdbc:hive2://carbon15:10000> -- Q09 带有FROM多表子查询，查询表中使用函数(EXTRACT)，从结果集中统计(SUM)
+0: jdbc:hive2://carbon15:10000> -- Q10 多表条件查询(>=, <，并统计(SUM)
+0: jdbc:hive2://carbon15:10000> -- Q11 在GROUP BY中使用比较条件(HAVING >)，比较值从子查询中查出
+0: jdbc:hive2://carbon15:10000> -- Q12 带有逻辑判断(WHEN AND/ WHEN OR)的查询，并统计(SUM)
+0: jdbc:hive2://carbon15:10000> -- Q13 带有FROM子查询，子查询中使用外联结
+0: jdbc:hive2://carbon15:10000> -- Q14 使用逻辑判断(WHEN ELSE)的查询
+0: jdbc:hive2://carbon15:10000> -- Q15 使用视图和表关联查询
+0: jdbc:hive2://carbon15:10000> -- Q16 在WHERE子句中使用子查询，使用IN/ NOT IN判断条件，并统计(COUNT)
+0: jdbc:hive2://carbon15:10000> -- Q17 在WHERE子句中使用子查询，使用<比较，使用了AVG函数
+0: jdbc:hive2://carbon15:10000> -- Q18 在WHERE子句中使用IN条件从子查询结果中比较
+0: jdbc:hive2://carbon15:10000> -- Q19 多条件比较查询
+0: jdbc:hive2://carbon15:10000> -- Q20 WHERE条件子查询(三层)
+0: jdbc:hive2://carbon15:10000> -- Q21 在WHERE条件中使用子查询，使用EXISTS和NOT EXISTS判断
+0: jdbc:hive2://carbon15:10000> -- Q22 在WHERE条件中使用判断子查询、IN、NOT EXISTS，并统计(SUM、COUNT)查询结果
+0: jdbc:hive2://carbon15:10000> 
+0: jdbc:hive2://carbon15:10000> select l_returnflag, l_linestatus, sum(l_quantity) as sum_qty, sum(l_extendedprice) as sum_base_pr ice, sum(l_extendedprice*(1-l_discount)) as sum_disc_price, sum(l_extendedprice*(1-l_discount)*(1+l_tax)) as sum_charge, avg(l_qua ntity) as avg_qty, avg(l_extendedprice) as avg_price, avg(l_discount) as avg_disc, count(*) as count_order from lineitem where l_s hipdate <= date('1998-09-02') group by l_returnflag, l_linestatus order by l_returnflag, l_linestatus;
++---------------+---------------+----------------+------------------------+------------------------+------------------------+---------------------+---------------------+-----------------------+--------------+--+
+| l_returnflag  | l_linestatus  |    sum_qty     |     sum_base_price     |     sum_disc_price     |       sum_charge       |       avg_qty       |      avg_price      |       avg_disc        | count_order  |
++---------------+---------------+----------------+------------------------+------------------------+------------------------+---------------------+---------------------+-----------------------+--------------+--+
+| A             | F             | 1.132555197E9  | 1.6981971833917588E12  | 1.6132773128342048E12  | 1.677830012676317E12   | 25.500975103007097  | 38237.15100895875   | 0.05000657454018168   | 44412231     |
+| N             | F             | 2.9554842E7    | 4.430231519751014E10   | 4.208641737663416E10   | 4.377147299510022E10   | 25.522448302840946  | 38257.81066008126   | 0.04997336773764475   | 1157994      |
+| N             | O             | 2.229374619E9  | 3.342906860705639E12   | 3.175742766434965E12   | 3.3028110005118447E12  | 25.498075870689316  | 38233.9029234818    | 0.050000811820859185  | 87433053     |
+| R             | F             | 1.13319849E9   | 1.6992931649280012E12  | 1.6143327679943354E12  | 1.6789043426552805E12  | 25.50838478968014   | 38251.219273559786  | 0.04999679231402667   | 44424549     |
++---------------+---------------+----------------+------------------------+------------------------+------------------------+---------------------+---------------------+-----------------------+--------------+--+
+4 rows selected (13.838 seconds)
+0: jdbc:hive2://carbon15:10000> 
+0: jdbc:hive2://carbon15:10000> select s_acctbal, s_name, n_name, p_partkey, p_mfgr, s_address, s_phone, s_comment from part, supp lier, partsupp, nation, region where p_partkey = ps_partkey and s_suppkey = ps_suppkey and p_size = 15 and p_type like '%BRASS' an d s_nationkey = n_nationkey and n_regionkey = r_regionkey and r_name = 'EUROPE' and ps_supplycost = ( select min(ps_supplycost) fr om partsupp, supplier,nation, region where p_partkey = ps_partkey and s_suppkey = ps_suppkey and s_nationkey = n_nationkey and n_r egionkey = r_regionkey and r_name = 'EUROPE' ) order by s_acctbal desc, n_name, s_name, p_partkey limit 100;
+Error: org.apache.spark.SparkException: Job aborted due to stage failure: Task 0 in stage 329.0 failed 4 times, most recent failure: Lost task 0.3 in stage 329.0 (TID 21875, 10.1.23.96, executor 0): java.io.IOException: No space left on device
+	at java.io.FileOutputStream.writeBytes(Native Method)
+	at java.io.FileOutputStream.write(FileOutputStream.java:326)
+	at org.apache.spark.storage.TimeTrackingOutputStream.write(TimeTrackingOutputStream.java:58)
+	at java.io.BufferedOutputStream.flushBuffer(BufferedOutputStream.java:82)
+	at java.io.BufferedOutputStream.write(BufferedOutputStream.java:126)
+	at net.jpountz.lz4.LZ4BlockOutputStream.flushBufferedData(LZ4BlockOutputStream.java:205)
+	at net.jpountz.lz4.LZ4BlockOutputStream.write(LZ4BlockOutputStream.java:158)
+	at java.io.BufferedOutputStream.flushBuffer(BufferedOutputStream.java:82)
+	at java.io.BufferedOutputStream.write(BufferedOutputStream.java:126)
+	at java.io.DataOutputStream.write(DataOutputStream.java:107)
+	at org.apache.spark.sql.catalyst.expressions.UnsafeRow.writeToStream(UnsafeRow.java:554)
+	at org.apache.spark.sql.execution.UnsafeRowSerializerInstance$$anon$1.writeValue(UnsafeRowSerializer.scala:69)
+	at org.apache.spark.storage.DiskBlockObjectWriter.write(DiskBlockObjectWriter.scala:241)
+	at org.apache.spark.shuffle.sort.BypassMergeSortShuffleWriter.write(BypassMergeSortShuffleWriter.java:151)
+	at org.apache.spark.scheduler.ShuffleMapTask.runTask(ShuffleMapTask.scala:96)
+	at org.apache.spark.scheduler.ShuffleMapTask.runTask(ShuffleMapTask.scala:53)
+	at org.apache.spark.scheduler.Task.run(Task.scala:108)
+	at org.apache.spark.executor.Executor$TaskRunner.run(Executor.scala:338)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+
+Driver stacktrace: (state=,code=0)
+
+Closing: 0: jdbc:hive2://carbon15:10000

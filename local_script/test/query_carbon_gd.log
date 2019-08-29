@@ -1,0 +1,12 @@
+Java HotSpot(TM) 64-Bit Server VM warning: Insufficient space for shared memory file:
+   2656
+Try using the -Djava.io.tmpdir= option to select an alternate temp location.
+
+Connecting to jdbc:hive2://carbon15:10000
+18/11/29 10:54:59 INFO Utils (Utils:310): Supplied authorities: carbon15:10000
+18/11/29 10:54:59 INFO Utils (Utils:397): Resolved authority: carbon15:10000
+18/11/29 10:54:59 INFO HiveConnection (HiveConnection:203): Will try to open client transport with JDBC Uri: jdbc:hive2://carbon15:10000
+Connected to: Spark SQL (version 2.2.1)
+Driver: Hive JDBC (version 1.2.1.spark2)
+Transaction isolation: TRANSACTION_REPEATABLE_READ
+0: jdbc:hive2://carbon15:10000> use tpchcarbon_gd;

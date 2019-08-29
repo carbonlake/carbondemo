@@ -1,0 +1,142 @@
+Connecting to jdbc:hive2://carbon15:10000
+18/11/26 21:18:05 INFO Utils (Utils:310): Supplied authorities: carbon15:10000
+18/11/26 21:18:05 INFO Utils (Utils:397): Resolved authority: carbon15:10000
+18/11/26 21:18:05 INFO HiveConnection (HiveConnection:203): Will try to open client transport with JDBC Uri: jdbc:hive2://carbon15:10000
+Connected to: Spark SQL (version 2.2.1)
+Driver: Hive JDBC (version 1.2.1.spark2)
+Transaction isolation: TRANSACTION_REPEATABLE_READ
+0: jdbc:hive2://carbon15:10000> use tpchparquet_partition;
++---------+--+
+| Result  |
++---------+--+
++---------+--+
+No rows selected (0.089 seconds)
+0: jdbc:hive2://carbon15:10000> set hive.exec.dynamic.partition.mode=nonstrict;
++-----------------------------------+------------+--+
+|                key                |   value    |
++-----------------------------------+------------+--+
+| hive.exec.dynamic.partition.mode  | nonstrict  |
++-----------------------------------+------------+--+
+1 row selected (0.025 seconds)
+0: jdbc:hive2://carbon15:10000> set hive.exec.dynamic.partition=true;
++------------------------------+--------+--+
+|             key              | value  |
++------------------------------+--------+--+
+| hive.exec.dynamic.partition  | true   |
++------------------------------+--------+--+
+1 row selected (0.042 seconds)
+0: jdbc:hive2://carbon15:10000> set hive.exec.max.dynamic.partitions=10000;
++-----------------------------------+--------+--+
+|                key                | value  |
++-----------------------------------+--------+--+
+| hive.exec.max.dynamic.partitions  | 10000  |
++-----------------------------------+--------+--+
+1 row selected (0.021 seconds)
+0: jdbc:hive2://carbon15:10000> 
+0: jdbc:hive2://carbon15:10000> insert into table nation partition(N_NAME) select N_NATIONKEY,N_REGIONKEY,N_COMMENT,n_name from tp chhive.nation;
++---------+--+
+| Result  |
++---------+--+
++---------+--+
+No rows selected (3.929 seconds)
+0: jdbc:hive2://carbon15:10000> insert into table supplier select * from tpchhive.supplier;
++---------+--+
+| Result  |
++---------+--+
++---------+--+
+No rows selected (0.686 seconds)
+0: jdbc:hive2://carbon15:10000> insert into table ORDERS partition(O_ORDERDATE) select O_ORDERKEY,O_CUSTKEY,O_ORDERSTATUS,O_TOTALP RICE,O_ORDERPRIORITY,O_CLERK,O_SHIPPRIORITY,O_COMMENT,o_orderdate from tpchhive.ORDERS DISTRIBUTE BY O_ORDERDATE;
++---------+--+
+| Result  |
++---------+--+
++---------+--+
+No rows selected (238.091 seconds)
+0: jdbc:hive2://carbon15:10000> insert into table lineitem partition(L_SHIPDATE) select L_ORDERKEY,L_PARTKEY,L_SUPPKEY,L_LINENUMBE R,L_QUANTITY,L_EXTENDEDPRICE,L_DISCOUNT,L_TAX,L_RETURNFLAG,L_LINESTATUS,L_COMMITDATE,L_RECEIPTDATE,L_SHIPINSTRUCT,L_SHIPMODE,L_COM MENT, l_shipdate from tpchhive.lineitem DISTRIBUTE BY l_shipdate;
++---------+--+
+| Result  |
++---------+--+
++---------+--+
+No rows selected (394.317 seconds)
+0: jdbc:hive2://carbon15:10000> insert into table PARTSUPP select * from tpchhive.partsupp;
++---------+--+
+| Result  |
++---------+--+
++---------+--+
+No rows selected (8.218 seconds)
+0: jdbc:hive2://carbon15:10000> insert into table REGION partition(r_name) select R_REGIONKEY,R_COMMENT,r_name from tpchhive.regio n;
++---------+--+
+| Result  |
++---------+--+
++---------+--+
+No rows selected (0.711 seconds)
+0: jdbc:hive2://carbon15:10000> insert into TABLE PART partition(P_BRAND) select P_PARTKEY,P_NAME,P_MFGR,P_TYPE,P_SIZE,P_CONTAINER ,P_RETAILPRICE,P_COMMENT,P_BRAND from tpchhive.part;
++---------+--+
+| Result  |
++---------+--+
++---------+--+
+No rows selected (15.318 seconds)
+0: jdbc:hive2://carbon15:10000> insert into table CUSTOMER partition(C_MKTSEGMENT) select C_CUSTKEY,C_NAME,C_ADDRESS,C_NATIONKEY,C _PHONE,C_ACCTBAL,C_COMMENT,C_MKTSEGMENT from tpchhive.customer;
++---------+--+
+| Result  |
++---------+--+
++---------+--+
+No rows selected (7.888 seconds)
+0: jdbc:hive2://carbon15:10000> 
+0: jdbc:hive2://carbon15:10000> select count(*) from LINEITEM;
++-----------+--+
+| count(1)  |
++-----------+--+
+| 59986052  |
++-----------+--+
+1 row selected (10.422 seconds)
+0: jdbc:hive2://carbon15:10000> select count(*) from SUPPLIER;
++-----------+--+
+| count(1)  |
++-----------+--+
+| 100000    |
++-----------+--+
+1 row selected (0.678 seconds)
+0: jdbc:hive2://carbon15:10000> select count(*) from PARTSUPP;
++-----------+--+
+| count(1)  |
++-----------+--+
+| 8000000   |
++-----------+--+
+1 row selected (0.19 seconds)
+0: jdbc:hive2://carbon15:10000> select count(*) from CUSTOMER;
++-----------+--+
+| count(1)  |
++-----------+--+
+| 1500000   |
++-----------+--+
+1 row selected (0.247 seconds)
+0: jdbc:hive2://carbon15:10000> select count(*) from NATION;
++-----------+--+
+| count(1)  |
++-----------+--+
+| 25        |
++-----------+--+
+1 row selected (0.201 seconds)
+0: jdbc:hive2://carbon15:10000> select count(*) from REGION;
++-----------+--+
+| count(1)  |
++-----------+--+
+| 5         |
++-----------+--+
+1 row selected (0.154 seconds)
+0: jdbc:hive2://carbon15:10000> select count(*) from PART;
++-----------+--+
+| count(1)  |
++-----------+--+
+| 2000000   |
++-----------+--+
+1 row selected (0.306 seconds)
+0: jdbc:hive2://carbon15:10000> select count(*) from ORDERS;
++-----------+--+
+| count(1)  |
++-----------+--+
+| 15000000  |
++-----------+--+
+1 row selected (7.449 seconds)
+0: jdbc:hive2://carbon15:10000> 
+Closing: 0: jdbc:hive2://carbon15:10000
